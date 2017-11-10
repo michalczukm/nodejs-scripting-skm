@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 
 const sizes = [ 
@@ -10,11 +10,8 @@ const sizes = [
 const logoPath = path.resolve(__dirname, './../assets/logo.png');
 const distPath = path.resolve(__dirname, './../dist');
 
-if(!fs.access(distPath)) {
-    fs.mkdir(distPath);
-}
+fs.ensureDirSync(distPath);
 
 sizes.forEach(size =>
-    fs.createReadStream(logoPath)
-        .pipe(fs.createWriteStream(path.resolve(distPath, `logo-${size.x}x${size.y}.png`)))
+    fs.copyFileSync(logoPath, path.resolve(distPath, `logo-${size.x}x${size.y}.png`))
 );

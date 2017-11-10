@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "build": "npm run tsc -- --project tsconfig.json",
+    "build": "node build-scripts/prepare-icons.js &&  npm run tsc -- --project tsconfig.json",
     "start": "npm run build -- --watch"
   },
   "author": "",
@@ -21,6 +21,7 @@
     "fs-extra": "^4.0.2",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
+    "sharp": "^0.18.4",
     "typescript": "^2.6.1"
   }
 }

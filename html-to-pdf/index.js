@@ -1,17 +1,19 @@
-/**
- * @example
- * node html-to-pdf.js "<p>Test!</p>" > test_1.pdf
- */
+const http = require('http');
+const convert = require('./convert');
+var url = require('url');
 
-const pdf = require('html-pdf');
-const process = require('process');
+const hostname = '127.0.0.1';
+const port = 3000;
 
-const args = process.argv.slice(2);
-let [html] = args;
+// only happy flow covered
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/pdf');
 
-const options = {
-    format: 'A4'
-};
+  const html = url.parse(req.url, true).query.html;
+  convert(html).then(stream => stream.pipe(res));
+});
 
-pdf.create(html, options)
-    .toStream((err, res) => !err ? res.pipe(process.stdout) : process.stderr.write(`Failed: ${err}`));
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});

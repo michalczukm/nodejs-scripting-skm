@@ -1,0 +1,27 @@
+{
+  "name": "ts-and-scripts-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "build": "node build-scripts/prepare-icons.js &&  npm run tsc -- --project tsconfig.json",
+    "start": "npm run build -- --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1",
+    "toastr": "^2.1.2"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.2.16",
+    "@types/toastr": "^2.1.35",
+    "fs-extra": "^4.0.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "sharp": "^0.18.4",
+    "typescript": "^2.6.1"
+  }
+}

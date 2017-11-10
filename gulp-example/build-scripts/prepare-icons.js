@@ -10,8 +10,11 @@ const sizes = [
 const logoPath = path.resolve(__dirname, './../assets/logo.png');
 const distPath = path.resolve(__dirname, './../dist');
 
-fs.ensureDirSync(distPath);
-
-sizes.forEach(size =>
-    fs.copyFileSync(logoPath, path.resolve(distPath, `logo-${size.x}x${size.y}.png`))
-);
+fs.ensureDir(distPath)
+    .then(() => 
+        sizes.forEach(size =>
+            fs.copyFile(logoPath, path.resolve(distPath, `logo-${size.x}x${size.y}.png`))
+        )
+    )
+    .then(() => console.log('great succes!'))
+    .catch(() => console.log('ups'));

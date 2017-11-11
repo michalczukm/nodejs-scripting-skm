@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsc": "tsc",
-    "build": "node build-scripts/prepare-icons.js &&  npm run tsc -- --project tsconfig.json",
+    "build": "node build-scripts/prepare-icons.js && tsc --project tsconfig.json",
     "start": "npm run build -- --watch"
   },
   "author": "",

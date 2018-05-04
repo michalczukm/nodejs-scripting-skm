@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "hapi": "^16.6.3",
+    "hoek": "^4.2.1",
     "html-pdf": "^2.2.0"
   }
 }
